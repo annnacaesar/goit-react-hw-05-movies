@@ -4,20 +4,31 @@ import {
 ItemCost,
 	Data
 } from "./Cast.styled";
-import {useState, useEffect} from 'react'
-import { fetchMoviesCredits } from "../../services/api-service";
+import { useState, useEffect } from 'react'
 import { getImgPath } from "../../helpers/normalization-obj";
+import {  useParams } from "react-router";
+import { fetchMoviesCredits } from "../../services/api-service";
 
 const Cast = () => {
-const [credits, setCredits] = useState([]);
-
-	useEffect(() => {
-		fetchMoviesCredits(12593).then(response => setCredits(response))
-	}, [])
+	const [credits, setCredits] = useState([]);
+	const { movieId } = useParams();
 	
+	useEffect(() => {
+    const getCast = async () => {
+      try {
+				const response = await fetchMoviesCredits(Number(movieId));
+				console.log(response);
+        setCredits(response);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getCast();
+  }, [movieId]);
 
 	return (
-		<Container>
+		<Container>{
+		credits.length !== 0 ?
 			<ListCost>
 				{credits && credits.map(({ name, profile_path, character, id }) => {
 					const img = getImgPath(profile_path)
@@ -27,35 +38,8 @@ const [credits, setCredits] = useState([]);
 						<Data>Character: {character} </Data>
 					</ItemCost>
 				})}
-				
-			{/* <ItemCost>
-				<img src="https://lukachi.com.ua/source/default-image.jpg" alt="name" />
-				<Data>Name</Data>
-				<Data>Character: </Data>
-			</ItemCost>
-			<ItemCost>
-				<img src="https://lukachi.com.ua/source/default-image.jpg" alt="name" />
-				<Data>Name</Data>
-				<Data>Character: </Data>
-			</ItemCost>
-			<ItemCost>
-				<img src="https://lukachi.com.ua/source/default-image.jpg" alt="name" />
-				<Data>Name</Data>
-				<Data>Character: </Data>
-			</ItemCost>
-			<ItemCost>
-				<img src="https://lukachi.com.ua/source/default-image.jpg" alt="name" />
-				<Data>Name</Data>
-				<Data>Character: </Data>
-			</ItemCost>
-			<ItemCost>
-				<img src="https://lukachi.com.ua/source/default-image.jpg" alt="name" />
-				<Data>Name</Data>
-				<Data>Character: </Data>
-			</ItemCost> */}
-		</ListCost>
+		</ListCost> : <Data>We have no information about the actors of this movie</Data> }
 		</Container>
-		
 	)
 }
 

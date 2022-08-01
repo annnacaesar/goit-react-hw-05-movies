@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const NavContainer = styled.div`
-	padding-bottom: 20px;
+	padding: 20px;
 	border-bottom: var(--border);
 `;
 

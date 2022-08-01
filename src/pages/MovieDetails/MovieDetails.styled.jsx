@@ -19,6 +19,7 @@ border-radius: 5px;
 color: var(--font-color);
 `
 export const Image = styled.img`
+max-width: 300px;
 display:block;
 border-radius: 5px;
 `

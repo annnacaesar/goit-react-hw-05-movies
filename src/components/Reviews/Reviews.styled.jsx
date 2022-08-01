@@ -20,6 +20,7 @@ export const ReviewsItem = styled.li`
 `
 
 export const Data = styled.p`
+font-size: 18px;
 &:not(:last-of-type) {
 	margin-bottom: 10px;
 }

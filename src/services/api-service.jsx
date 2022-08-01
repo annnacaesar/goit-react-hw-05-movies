@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { normalizeMovies } from '../helpers/normalization-obj';
+import { normalizeMovies, normalizeMoviesDetails } from '../helpers/normalization-obj';
 
 const API_KEY = '7cb8097836a7a1f4e5c19953961668c8';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -11,8 +11,13 @@ axios.defaults.params = {
 
 export const fetchTrendingMovies = async () => {
 	const { data } = await axios.get(`/trending/all/day?`);
-	console.log(data);
 	const response = normalizeMovies(data.results);
+	return response;
+};
+
+export const fetchMoviesById = async (id) => {
+	const { data } = await axios.get(`/movie/${id}?`);
+	const response = normalizeMoviesDetails(data);
 	return response;
 };
 
@@ -25,13 +30,11 @@ export const fetchMoviesBySearch = async query => {
 
 export const fetchMoviesCredits = async (id) => {
 	const  {data}  = await axios.get(`/movie/${id}/credits?`);
-	console.log(data.cast);
 	return data.cast;
 };
 
 export const fetchMoviesReviews = async (id) => {
 	const  {data}  = await axios.get(`/movie/${id}/reviews?`);
-	console.log(data.results);
 	return data.results;
 };
 

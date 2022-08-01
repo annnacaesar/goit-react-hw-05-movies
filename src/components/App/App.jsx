@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
 import  Loyout from 'components/Loyout';
-import  Home from 'components/Home';
-import Movies from "components/Movies";
-import MovieDetails from "components/MovieDetails";
+import  Home from 'pages/Home';
+import Movies from "pages/Movies";
+import MovieDetails from "pages/MovieDetails";
 import Cast from "components/Cast";
 import {useState, useEffect} from 'react'
 import { fetchTrendingMovies } from "../../services/api-service";

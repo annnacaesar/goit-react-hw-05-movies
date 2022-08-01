@@ -6,17 +6,30 @@ import {
  ReviewsItem,
  Data 
 } from "./Reviews.styled";
+import {  useParams } from "react-router";
+
+
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
-
+	const { movieId } = useParams();
+	
 	useEffect(() => {
-		fetchMoviesReviews(725201).then(response => setReviews(response))
-	}, [])
+    const getReviews = async () => {
+      try {
+				const response = await fetchMoviesReviews(Number(movieId));
+				console.log(response);
+        setReviews(response);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getReviews();
+  }, [movieId]);
 
 	return (
-		<Container>
-			<ReviewsList>
+		<Container>{
+		reviews.length !== 0 ? <ReviewsList>
 				{reviews && reviews.map(({ content, author_details, id }) => {
 					return <ReviewsItem key={id} data-id={id}>
 						
@@ -26,8 +39,8 @@ const Reviews = () => {
 						<Data>{ content}</Data>
 					</ReviewsItem>
 					
-				})}
-</ReviewsList>
+				})   }
+			</ReviewsList> : <Data>We don't have any reviews for this movie</Data> }
 		</Container>
 	)
 }
