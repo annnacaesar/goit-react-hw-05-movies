@@ -1,26 +1,23 @@
-import { Route, Routes } from "react-router";
-import  Loyout from 'components/Loyout';
-import  Home from 'pages/Home';
-import Movies from "pages/Movies";
-import MovieDetails from "pages/MovieDetails";
-import Cast from "components/Cast";
-import {useState, useEffect} from 'react'
-import { fetchTrendingMovies } from "../../services/api-service";
-import Reviews from "components/Reviews";
+import { Route, Routes } from 'react-router';
+import Loyout from 'components/Loyout';
+import Home from 'pages/Home';
+import Movies from 'pages/Movies';
+import MovieDetails from 'pages/MovieDetails';
+import Cast from 'components/Cast';
+import { useState, useEffect } from 'react';
+import { fetchTrendingMovies } from '../../services/api-service';
+import Reviews from 'components/Reviews';
 // import { fetchMoviesBySearch } from "services/api-service";
 
-
 export const App = () => {
-
-const [movies, setMovies] = useState([]);
-// const [movieDetails, setMovieDetails] = useState([]);
+	const [movies, setMovies] = useState([]);
+	// const [movieDetails, setMovieDetails] = useState([]);
 
 	useEffect(() => {
-		fetchTrendingMovies().then(response => setMovies(response))
-	}, [])
-	
+		fetchTrendingMovies().then(response => setMovies(response));
+	}, []);
 
-  // const getPhotos = async (query, page) => {
+	// const getPhotos = async (query, page) => {
 	// 	if (!query) return;
 	// 	// setIsLoading(true);
 	// 	try {
@@ -37,19 +34,19 @@ const [movies, setMovies] = useState([]);
 	// 	}
 	// };
 
-
-
-
-  return (
-    <Routes>
-      <Route path="/" element={<Loyout />}>
-        <Route index element={<Home />}/ >
-        <Route path="/movies" element={< Movies />}/>
-        <Route path="/movies/:movieId" element={< MovieDetails movies={ movies}/>}>
-          <Route path="cast" element={< Cast/>}/>
-          <Route path="reviews" element={< Reviews/>}/>
-        </Route>
-      </Route>
-    </Routes>
+	return (
+		<Routes>
+			<Route path="/" element={<Loyout />}>
+				<Route index element={<Home />} />
+				<Route path="/movies" element={<Movies />} />
+				<Route
+					path="/movies/:movieId"
+					element={<MovieDetails movies={movies} />}
+				>
+					<Route path="cast" element={<Cast />} />
+					<Route path="reviews" element={<Reviews />} />
+				</Route>
+			</Route>
+		</Routes>
 	);
 };

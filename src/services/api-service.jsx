@@ -1,5 +1,8 @@
 import axios from 'axios';
-import { normalizeMovies, normalizeMoviesDetails } from '../helpers/normalization-obj';
+import {
+	normalizeMovies,
+	normalizeMoviesDetails,
+} from '../helpers/normalization-obj';
 
 const API_KEY = '7cb8097836a7a1f4e5c19953961668c8';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -15,7 +18,7 @@ export const fetchTrendingMovies = async () => {
 	return response;
 };
 
-export const fetchMoviesById = async (id) => {
+export const fetchMoviesById = async id => {
 	const { data } = await axios.get(`/movie/${id}?`);
 	const response = normalizeMoviesDetails(data);
 	return response;
@@ -27,18 +30,15 @@ export const fetchMoviesBySearch = async query => {
 	return response;
 };
 
-
-export const fetchMoviesCredits = async (id) => {
-	const  {data}  = await axios.get(`/movie/${id}/credits?`);
+export const fetchMoviesCredits = async id => {
+	const { data } = await axios.get(`/movie/${id}/credits?`);
 	return data.cast;
 };
 
-export const fetchMoviesReviews = async (id) => {
-	const  {data}  = await axios.get(`/movie/${id}/reviews?`);
+export const fetchMoviesReviews = async id => {
+	const { data } = await axios.get(`/movie/${id}/reviews?`);
 	return data.results;
 };
-
-
 
 // export default fetchMoviesBySearch;
 
@@ -58,13 +58,12 @@ export const fetchMoviesReviews = async (id) => {
 // vote_average: 7.1
 // vote_count: 50
 
-
-// genre: 
-//   id: 
-//   title: 
-//   about: 
-//   popularity: 
-//   img: 
-//   releaseDate: 
-//   vote: 
-//   votes: 
+// genre:
+//   id:
+//   title:
+//   about:
+//   popularity:
+//   img:
+//   releaseDate:
+//   vote:
+//   votes:
