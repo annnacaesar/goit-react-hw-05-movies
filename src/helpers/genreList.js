@@ -1,4 +1,4 @@
-export default {
+export const obj = {
   28: "Action",
   12: "Adventure",
   16: "Animation",
@@ -19,5 +19,6 @@ export default {
   10752: "War",
   37: "Western",
 };
-const arr = [1, 2, 3, 4, 5, 6, 7].slice(0, 4);
+// const arr = [1, 2, 3, 4, 5, 6, 7].slice(0, 4);
 
+export default obj;
