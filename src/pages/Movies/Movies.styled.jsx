@@ -14,7 +14,13 @@ export const Input = styled.input`
 	min-width: 300px;
 	height: 40px;
 	background-color: #fbf9fa3f;
+	color: var(--font-color);
+	font-size: 20px;
 	border-radius: 5px 0 0 5px;
+	&:active,
+	&:focus {
+		outline: 1px solid var(--font-color);
+	}
 
 	&::placeholder {
 		color: var(--font-color);
