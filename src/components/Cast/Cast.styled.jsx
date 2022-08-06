@@ -18,17 +18,17 @@ export const ItemCost = styled.li`
 	color: var(--font-color);
 	background: #fbf9fa3f;
 	/* font-size: 16px; */
-	border-radius: 5px ;
-	
-	& img{
-			width: 100%;
-			max-height: 300px;
+	border-radius: 5px;
+
+	& img {
+		width: 100%;
+		max-height: 300px;
 		object-fit: cover;
-		}
+	}
 `;
 
 export const Data = styled.p`
-margin-top:10px;
+	margin-top: 10px;
 	font-size: 14px;
 	font-weight: 600;
 `;

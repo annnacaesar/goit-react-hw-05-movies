@@ -24,7 +24,7 @@ export const Item = styled(Link)`
 	color: var(--font-colo);
 	background: #fbf9fa3f;
 	font-size: 18px;
-	border-radius: 5px ;
+	border-radius: 5px;
 	& img {
 		width: 100%;
 	}

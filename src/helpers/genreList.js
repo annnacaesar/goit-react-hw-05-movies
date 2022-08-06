@@ -19,6 +19,5 @@ export const obj = {
   10752: "War",
   37: "Western",
 };
-// const arr = [1, 2, 3, 4, 5, 6, 7].slice(0, 4);
 
 export default obj;
